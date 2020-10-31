@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Step 1 : Run bundle install
+     
+     bundle install
 
-Things you may want to cover:
+Step 2 : Migrate and seed datbase with following code
+     
+     rails db:migrate
+     rails db:seed
+     
+Step 3 : Run server with
 
-* Ruby version
+    rails s
+    
+Step 4 : Create user with your email as devise sends confirmation token to your mail.
 
-* System dependencies
+Step 5 : Add a movie with plus icon present on navbar.
 
-* Configuration
+Step 6 : Add Screen to the theatres from Movie show page.
 
-* Database creation
+Step 7 : Now You can buy ticket from Movie Show page. You can buy tickets only after assigning a screen to the movie.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Anytime a movie is created, the project sends a mail to every user's mail address.
+When you buy a ticket, the project sends ticket to your mail address.
