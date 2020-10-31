@@ -1,0 +1,12 @@
+<div id="errors"></div>
+<div id="persons-form">
+  <%= render 'form', person: Person.new %>
+</div>
+<hr>
+<h1>Persons</h1>
+<small>
+  <i class="fa fa-check" aria-hidden="true" style="color:green;"></i> - indicates that person is in use already
+</small>
+<table class="table mt-2" id="persons-container">
+  <%= render @persons %>
+</table>

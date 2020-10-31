@@ -1,0 +1,6 @@
+$("#timing-form").html("");
+<% if @error.nil? %>
+  $("#timings").append("<%= j render @timing %>")
+<% else %>
+  $("#errors").append("<%= j render 'layouts/messages', alert: @error %>")
+<% end %>

@@ -1,0 +1,20 @@
+<div id="screen-<%= screen.id %>">
+  <div class="card mb-2">
+    <div class="card-body text-center">
+      <strong><%= screen.name %></strong><br>
+      <small><%= screen.seats %> seats</small><br>
+      <% if user_signed_in? %>
+        <%= link_to edit_screen_path(id: screen.id, theatre_id: screen.theatre.id), remote: true, class: "btn btn-outline-link mt-1 mb-1" do %>
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        <% end %>
+        <%= link_to screen_path(id: screen.id, theatre_id: screen.theatre.id), method: :delete, class: "btn btn-outline-link mt-1 mb-1", remote: true,
+            data: {confirm: "Are you sure you want to delete - #{screen.name} ?"} do %>
+            <i class="fa fa-trash" aria-hidden="true" style="color:red"></i>
+        <% end %><br>
+        <%= link_to timings_path(screen_id: screen.id), class: "btn btn-outline-primary mt-1 mb-1" do %>
+          <i class="fa fa-plus" aria-hidden="true"> Add Timings</i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

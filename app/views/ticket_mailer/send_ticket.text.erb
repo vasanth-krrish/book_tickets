@@ -1,0 +1,14 @@
+You've purchased <%= @ticket.quantity %> tickets for <%= @ticket.movie_timing.movie.name %>
+===============================================
+<%= @ticket.movie_timing.movie.name %>
+<%= @ticket.movie_timing.movie.runtime/60 %> hrs <%= @ticket.movie_timing.movie.runtime%60 %> mins
+<%= @ticket.price_cents %> per ticket
+===============================================
+Theatre Details:
+
+Theatre   <%= @ticket.movie_timing.timing.screen.theatre.name %>
+Screen    <%= @ticket.movie_timing.timing.screen.name %>
+Date      <%= @ticket.booking_date %>
+Cost      <%= @ticket.price_cents * @ticket.quantity %>
+
+Thank you for your time!!

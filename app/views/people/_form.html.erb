@@ -1,0 +1,11 @@
+<%= form_for(person, remote: true) do |form| %>
+  <div class="field-group">
+    <%= form.text_field :name, class: 'form-control mt-4 mb-2', placeholder: 'Add a person', required: true %>
+  </div>
+  <div class="field-group">
+    <%= form.file_field :avatar, class: 'form-control-file mb-2' %>
+  </div>
+  <div class="field-group">
+    <%= form.submit class: 'btn btn-primary mb-2' %>
+  </div>
+<% end %>

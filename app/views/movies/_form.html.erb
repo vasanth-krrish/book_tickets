@@ -1,0 +1,63 @@
+<div id="lang-list" data-lang-list="<%= @languages %>"></div>
+<div id="genre-list" data-genre-list="<%= @genres %>"></div>
+
+<%= form_for(@movie) do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :name, class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :synopsis %>
+    <%= f.text_area :synopsis, class: 'form-control', rows: 3, required: true %>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :premiere_on %>
+      <%= f.date_field :premiere, class: 'form-control', min: Date.today, required: true %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= f.label :running_time_in_minutes %>
+      <%= f.number_field :runtime, class: 'form-control', min: 1, required: true %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :preview_image %>
+    <%= f.file_field :image, class: 'form-control-file' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Language" %><br>
+    <%= f.fields_for(@language) do |form| %>
+        <%= form.select :language, Language.all.map { |e| [e.language, e.id] }, {},
+            { multiple: true, id: "multiple-checkboxes", required: true} %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Genre" %><br>
+    <%= f.fields_for(@genre) do |form| %>
+      <%= form.select :genre, Genre.all.map { |e| [e.genre, e.id] }, {},
+          { multiple: true, id: "genre-checkboxes", required: true} %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-primary' %>
+    <%= link_to 'Back', :back, class: 'btn btn-outline-secondary' %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  const element = document.getElementById('lang-list');
+  const lang = String(element.getAttribute('data-lang-list'));
+  const array = lang.split('');
+  $('#multiple-checkboxes').val(array);
+
+  const ele = document.getElementById('genre-list');
+  const genre = String(ele.getAttribute('data-genre-list'));
+  const arr = genre.split('');
+  $('#genre-checkboxes').val(arr);
+</script>

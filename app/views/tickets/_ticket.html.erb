@@ -1,0 +1,14 @@
+<div class="card text-center">
+  <div class="card-header">
+    <%= image_tag movie_image(ticket.movie_timing.movie), class: "mb-2" %><br>
+    <h5><%= ticket.movie_timing.movie.name %></h5>
+  </div>
+  <div class="card-body">
+    <%= ticket.movie_timing.timing.screen.theatre.name %><br>
+    <%= ticket.movie_timing.timing.screen.name %><br>
+    <%= ticket.booking_date %><br>
+    <%= ticket.quantity %> tickets<br>
+    <i class="fa fa-inr" aria-hidden="true"></i> <%= ticket.price_cents %> per ticket<br>
+    Total : <i class="fa fa-inr" aria-hidden="true"></i> <%= ticket.price_cents * ticket.quantity %>
+  </div>
+</div>

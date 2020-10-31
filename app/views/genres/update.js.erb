@@ -1,0 +1,6 @@
+$("#errors").append("<%= j render 'layouts/messages', alert: @error %>")
+<% unless @error %>
+  $("#genre-<%= @genre.id %>").html("<%= j render 'genre', genre: @genre %>");
+  $("#genres-form").html("<%= j render 'form', genre: Genre.new %>");
+<% end %>
+$("#genre_genre").val("");

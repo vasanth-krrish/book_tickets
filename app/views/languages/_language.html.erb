@@ -1,0 +1,18 @@
+<tr id="language-<%= language.id %>">
+  <th>
+    <% if MovieLanguage.find_by(language_id: language.id) %>
+      <i class="fa fa-check" aria-hidden="true" style="color:green;"></i>
+    <% end %>
+    <a href="<%= language_path(language) %>" style="color:black;text-decoration:none;">
+      <%= language.language %>
+    </a>
+  </th>
+  <td class="text-center">
+    <%= link_to edit_language_path(language), remote: true, class: 'btn btn-outline-link' do %>
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+    <% end %>
+    <%= link_to language, method: :delete, remote: true, class: 'btn btn-outline-link', data: {confirm: "Are you sure you want to delete - #{language.language} ?" } do %>
+      <i class="fa fa-trash-o" aria-hidden="true" style="color:red;"></i>
+    <% end %>
+  </td>
+</tr>

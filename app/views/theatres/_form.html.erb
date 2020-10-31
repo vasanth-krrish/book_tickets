@@ -1,0 +1,39 @@
+<%= form_for(@theatre) do |f| %>
+  <div class="form-group">
+    <%= f.label "Theatre Name" %>
+    <%= f.text_field :name, autofocus: true, autofocus: 'Name', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, autofocus: true, autofocus: 'image', class: 'form-control-file' %>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :address %>
+      <%= f.text_area :address, autofocus: true, autocomplete: 'address', class: 'form-control', rows: 1 %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= f.label :city %>
+      <%= f.text_field :city, autofocus: true, autocomplete: 'city', class: 'form-control'  %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :state %>
+      <%= f.select :state, [['Select a state', nil]] + CityState.new.state.sort, {},
+          {autofocus: 'true', class: 'form-control'} %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= f.label :pincode %>
+      <%= f.text_field :pincode, autofocus: true, autofocus: 'contact', class: 'form-control',
+          minlength: 6, maxlength: 6, pattern: '[0-9]+' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary mb-2" %>
+  </div>
+<% end %>

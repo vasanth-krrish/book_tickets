@@ -1,0 +1,5 @@
+$("#errors").append("<%= j render 'layouts/messages', alert: @error %>")
+<% unless @error %>
+  $("#languages-container").append("<%= j render @language %>")
+<% end %>
+$("#language_language").val("");

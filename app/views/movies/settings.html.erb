@@ -1,0 +1,68 @@
+<div class="card-columns text-center mt-4">
+  <a href="<%= genres_path %>">
+    <div class="card">
+      <div class="card-body">
+        <h5><strong>Genres</strong></h5>
+        <h5><%= Genre.all.count %></h5>
+      </div>
+    </div>
+  </a>
+
+  <a href="<%= languages_path %>">
+    <div class="card">
+      <div class="card-body">
+        <h5><strong>Languages</strong></h5>
+        <h5><%= Language.all.count %></h5>
+      </div>
+    </div>
+  </a>
+
+  <a href="<%= people_path %>">
+    <div class="card">
+      <div class="card-body">
+        <h5><strong>Persons</strong></h5>
+        <h5><%= Person.all.count %></h5>
+      </div>
+    </div>
+  </a>
+
+  <a href="<%= theatres_path %>">
+    <div class="card">
+      <div class="card-body">
+        <h5><strong>Theatres</strong></h5>
+        <h5><%= Theatre.all.count %></h5>
+      </div>
+    </div>
+  </a>
+</div>
+
+<style media="screen">
+  .card {
+    background-color: #6c757d;
+    color: #ffffff;
+  }
+
+    @media (min-width: 576px) {
+        .card-columns {
+            column-count: 1;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .card-columns {
+            column-count: 2;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .card-columns {
+            column-count: 3;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .card-columns {
+            column-count: 4;
+        }
+    }
+</style>

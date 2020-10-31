@@ -1,0 +1,42 @@
+<h5 class="mt-4 mb-4"><strong>Search Results for - <%= params[:search] %></strong></h5>
+
+<% if @genre %>
+  <h5 class="mt-4 mb-4"><strong><%= @genre.genre.capitalize %> Movies</strong></h5>
+  <div class="card-columns">
+    <%= render @genre.movies %>
+  </div>
+<% end %>
+
+<% if @language %>
+  <h5 class="mt-4 mb-4"><strong><%= @language.language.capitalize %> Movies</strong></h5>
+  <div class="card-columns">
+    <%= render @language.movies %>
+  </div>
+<% end %>
+
+<% unless @persons.count == 0 %>
+  <h5 class="mt-4 mb-4"><strong>Cast & Crew</strong></h5>
+  <div class="card-columns">
+    <% @persons.each do |p|  %>
+      <% person = Person.find(p) %>
+      <a href="<%= person_path(person) %>">
+        <div class="card">
+          <div class="card-body text-center">
+            <%= image_tag user_avatar(person, 100), class: "rounded-circle mb-2" %><br>
+            <strong><%= person.name %></strong>
+          </div>
+        </div>
+      </a>
+    <% end %>
+  </div>
+<% end %>
+
+<% unless @results.count == 0 %>
+  <h5 class="mt-4 mb-4"><strong>Movies</strong></h5>
+  <div class="card-columns">
+    <% @results.each do |result| %>
+      <% movie = Movie.find(result) %>
+      <%= render "movies/movie", movie: movie %>
+    <% end %>
+  </div>
+<% end %>

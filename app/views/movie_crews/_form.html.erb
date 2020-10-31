@@ -1,0 +1,7 @@
+<%= form_for(@movie_crew, remote: true) do |f| %>
+  <%= f.hidden_field :movie_id, value: @movie.id %>
+  <%= f.select :person_id, (["Select a crew member..", nil] + Person.all.map { |e| [e.name, e.id] }).compact, {},
+      {class: 'form-control mb-2'}%>
+  <%= f.text_field :job, class: "form-control mb-2", placeholder: "Job" %>
+  <%= f.submit "Submit", class: "btn btn-primary mb-2" %>
+<% end %>

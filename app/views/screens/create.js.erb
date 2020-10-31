@@ -1,0 +1,6 @@
+$("#screen-form").html("");
+<% if @error %>
+  $("#errors").append("<%= j render 'layouts/messages', alert: @error %>");
+<% else %>
+  $("#screens").append("<%= j render @screen %>");
+<% end %>

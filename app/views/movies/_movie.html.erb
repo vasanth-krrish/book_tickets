@@ -1,0 +1,16 @@
+<a href="<%= movie_path(movie) %>" class="text-center">
+  <div class="card">
+    <div class="card-body text-center">
+        <figure>
+          <%= image_tag movie_image(movie) %>
+        </figure>
+        <h5 style="color:black;"><%= movie.name %></h5>
+        <p style="color:black;">
+          <small>
+            <%= movie_genre(movie) %><br>
+            <%= movie_language(movie) %>
+          </small>
+        </p>
+    </div>
+  </div>
+</a>

@@ -1,0 +1,17 @@
+<% if @timing.timing.nil? %>
+  <h5><strong>Add Timing</strong></h5>
+<% else %>
+  <h5><strong>Edit Timing - <%= get_screen_time(@timing.timing) %></strong></h5>
+<% end %>
+
+<%= form_for(@timing, remote: true) do |f| %>
+  <%= f.hidden_field :screen_id, value: @screen.id %>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.time_field :timing, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

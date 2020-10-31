@@ -1,0 +1,16 @@
+<div class="card" id="movie-crew-<%= movie_crew.id %>">
+  <div class="card-body text-center">
+    <%= image_tag user_avatar(movie_crew.person, 100), class: "rounded-circle mb-2" %><br>
+    <a href="<%= person_path(movie_crew.person.id) %>" style="color:black;text-decoration:none;">
+      <strong><%= movie_crew.person.name %></strong><br>
+    </a>
+    <small><%= movie_crew.job %></small>
+    <% if current_user.has_role? :admin %>
+      <br>
+      <%= link_to movie_crew_path(movie_id: movie_crew.movie.id, id: movie_crew.id), remote: true,
+          method: :delete, data: {confirm: "Are you sure you want to remove - #{movie_crew.person.name} ?"} do %>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>

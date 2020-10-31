@@ -1,0 +1,4 @@
+<% unless @errors %>
+  $("#casts-container").append("<%= j render @movie_cast %>");
+<% end %>
+$("#casts").html("");

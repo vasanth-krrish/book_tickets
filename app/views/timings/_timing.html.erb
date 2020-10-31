@@ -1,0 +1,45 @@
+<div id="timing-<%= timing.id %>">
+  <div class="card">
+    <div class="card-body text-center">
+      <strong><%= get_screen_time(timing.timing) %></strong><br>
+      <% if user_signed_in? %>
+        <%= link_to edit_timing_path(screen_id: timing.screen.id, id: timing.id), remote: true, class: "btn btn-outline-link" do %>
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        <% end %>
+        <%= link_to timing_path(screen_id: timing.screen.id, id: timing.id), method: :delete,
+            data: {confirm: "Are you sure you want to delete?"}, remote: true, class: "btn btn-outline-link" do %>
+          <i class="fa fa-trash" aria-hidden="true" style="color:red;"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <style media="screen">
+
+     @media (min-width: 576px) {
+         .card-columns {
+             column-count: 1;
+         }
+     }
+
+     @media (min-width: 768px) {
+         .card-columns {
+             column-count: 2;
+         }
+     }
+
+     @media (min-width: 992px) {
+         .card-columns {
+             column-count: 4;
+         }
+     }
+
+     @media (min-width: 1200px) {
+         .card-columns {
+             column-count: 5;
+         }
+     }
+
+  </style>
+
+</div>

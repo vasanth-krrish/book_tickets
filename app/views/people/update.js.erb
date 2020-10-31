@@ -1,0 +1,5 @@
+$("#errors").append("<%= j render 'layouts/messages', alert: @error %>")
+<% unless @error %>
+  $("#person-<%= @person.id %>").html("<%= j render 'person', person: @person %>");
+  $("#persons-form").html("<%= j render 'form', person: Person.new %>");
+<% end %>

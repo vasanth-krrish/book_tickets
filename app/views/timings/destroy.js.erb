@@ -1,0 +1,5 @@
+<% if @error.nil? %>
+  $("#timing-<%= @timing.id %>").fadeOut()
+<% else %>
+  $("#errors").append("<%= j render 'layouts/messages', alert: @error %>")
+<% end %>

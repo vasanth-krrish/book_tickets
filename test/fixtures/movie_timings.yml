@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  movie: one
+  timing: one
+  screening_till: MyString
+  price_cents: 1
+
+two:
+  movie: two
+  timing: two
+  screening_till: MyString
+  price_cents: 1

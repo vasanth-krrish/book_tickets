@@ -1,0 +1,9 @@
+<div class="card">
+  <div class="card-header text-center">
+    <h5><strong><%= @movie.name %></strong></h5>
+    <%= image_tag movie_image(@movie) if @movie.image.attached? %>
+  </div>
+  <div class="card-body">
+    <%= render 'form' %>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>You've purchased <%= @ticket.quantity %> tickets for <%= @ticket.movie_timing.movie.name %></p>
+    <p>
+    ------------------------------------------------------------------------------</p>
+    <p><%= @ticket.movie_timing.movie.name %></p>
+    <p><%= @ticket.movie_timing.movie.runtime/60 %> hrs <%= @ticket.movie_timing.movie.runtime%60 %> mins</p>
+    <p><%= @ticket.price_cents %> per ticket</p>
+    <p>------------------------------------------------------------------------------</p>
+    <p>Theatre Details:</p>
+    <p>Theatre   : <%= @ticket.movie_timing.timing.screen.theatre.name %></p>
+    <p>Screen    : <%= @ticket.movie_timing.timing.screen.name %></p>
+    <p>Date      : <%= @ticket.booking_date %></p>
+    <p>Cost      : <%= @ticket.price_cents * @ticket.quantity %></p>
+
+    <p>Thank you for your time!!</p>
+  </body>
+</html>

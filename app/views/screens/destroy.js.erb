@@ -1,0 +1,5 @@
+<% if @error %>
+  $("#errors").append("<%= j render 'layouts/messages', alert: @error %>");
+<% else %>
+  $("#screen-<%= @screen.id %>").fadeOut();
+<% end %>

@@ -1,0 +1,6 @@
+$("#errors").append("<%= j render 'layouts/messages', alert: @error %>")
+<% unless @error %>
+  $("#language-<%= @language.id %>").html("<%= j render 'language', language: @language %>");
+  $("#languages-form").html("<%= j render 'form', language: Language.new %>");
+<% end %>
+$("#language_language").val("");

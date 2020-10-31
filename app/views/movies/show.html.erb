@@ -1,0 +1,91 @@
+<div class="card mb-3">
+
+  <% if @movie.image.attached? %>
+  <div class="card-header text-center">
+    <%= image_tag movie_image(@movie) %>
+  </div>
+  <% end %>
+
+  <div class="card-body">
+    <h3>
+      <strong><%= @movie.name %></strong>
+      <%= link_to movie_timings_path(movie_id: @movie.id), class: 'btn btn-primary' do %>
+        Add Screen
+      <% end %>
+      <%= link_to "Buy Tickets", ticket_path(movie_id: @movie.id), class: "btn btn-secondary" %>
+    </h3>
+
+    <% @languages.each do |language| %>
+      <%= link_to language.language, language_path(language), class: 'btn btn-outline-dark mb-2' %>
+    <% end %><br>
+    <% @genres.each do |genre| %>
+      <%= link_to genre.genre, genre_path(genre), class: 'btn btn-secondary mb-2' %>
+    <% end %>
+
+    <p><small><strong>
+      <i class="fa fa-calendar-o" aria-hidden="true"></i> <%= @movie.premiere %> &nbsp;
+      <i class="fa fa-clock-o" aria-hidden="true"></i> <%= @movie.runtime/60 %> hrs <%= @movie.runtime%60 %> mins
+    </strong></small></p>
+
+    <p><%= simple_format(@movie.synopsis) %></p>
+
+    <h5><strong>Casts</strong></h5>
+    <div id="casts-container" class="card-columns">
+      <%= render @movie.movie_casts %>
+    </div>
+
+    <h5><strong>Crews</strong></h5>
+    <div id="crews-container" class="card-columns">
+      <%= render @movie.movie_crews %>
+    </div>
+
+    <div id="casts" style="display:none">
+      <h5><strong>Add Cast</strong></h5>
+    </div>
+    <div id="crews" style="display:none">
+      <h5><strong>Add Crew</strong></h5>
+    </div>
+
+    <% if user_signed_in? %>
+      <hr>
+      <%= link_to edit_movie_path(@movie), class: 'btn btn-outline-link' do %>
+        <i class="fa fa-pencil" aria-hidden="true" style="color:black"> Edit</i>
+      <% end %>
+      <%= link_to @movie, method: :delete, data: {confirm: "Are you sure you want to delete the movie?"}, class: 'btn btn-outline-link' do %>
+        <i class="fa fa-trash" aria-hidden="true" style="color:red"> Delete</i>
+      <% end %>
+      <%= link_to new_movie_cast_path(movie_id: @movie.id), class: 'btn btn-outline-link', remote: true  do %>
+        <i class="fa fa-plus" aria-hidden="true"> Cast</i>
+      <% end %>
+      <%= link_to new_movie_crew_path(movie_id: @movie.id), class: 'btn btn-outline-link', remote: true  do %>
+        <i class="fa fa-plus" aria-hidden="true"> Crew</i>
+      <% end %><br>
+    <% end %>
+  </div>
+</div>
+
+<style media="screen">
+  @media (min-width: 576px) {
+      .card-columns {
+          column-count: 2;
+      }
+  }
+
+  @media (min-width: 768px) {
+      .card-columns {
+          column-count: 3;
+      }
+  }
+
+  @media (min-width: 992px) {
+      .card-columns {
+          column-count: 4;
+      }
+  }
+
+  @media (min-width: 1200px) {
+      .card-columns {
+          column-count: 5;
+      }
+  }
+</style>

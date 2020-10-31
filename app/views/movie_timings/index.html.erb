@@ -1,0 +1,18 @@
+<div id="errors"></div>
+<div class="card">
+  <div class="card-header text-center">
+    <figure class="">
+      <%= image_tag movie_image(@movie) %>
+    </figure>
+    <h5><strong><%= @movie.name %></strong></h5>
+  </div>
+  <div class="card-body">
+    <div class="card-columns" id="movie-timings">
+      <%= render @movie_timings %>  
+    </div>
+    <div id="screen-form"></div>
+  </div>
+  <div class="card-footer">
+    <%= link_to "Add Screen", new_movie_timing_path(movie_id: @movie.id), remote: true, class: "btn btn-primary" %>
+  </div>
+</div>

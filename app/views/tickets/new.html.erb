@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-header text-center">
+    <%= image_tag movie_image(@movie_timing.movie), class: "mb-3" %><br>
+    <h5><strong><%= @movie_timing.movie.name %></strong></h5><br>
+  </div>
+  <div class="card-body">
+    <div class="text-center">
+      <strong>
+        <%= @movie_timing.timing.screen.theatre.name %><br>
+        <%= @movie_timing.timing.screen.name %><br>
+        <%= @movie_timing.timing.timing %><br>
+        <i class="fa fa-inr" aria-hidden="true"></i> <%= @movie_timing.price_cents %><br>
+      </strong>
+    </div>
+    <%= form_for(@ticket) do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :movie_timing_id, value: @movie_timing.id %>
+      <%= f.hidden_field :price_cents, value: @movie_timing.price_cents %>
+      <div class="form-group">
+        <%= f.label :date %>
+        <%= f.date_field :booking_date, min: min_date(@movie_timing.movie), max: @movie_timing.screening_till,
+            class: "form-control"%>
+      </div>
+      <div class="form-group">
+        <%= f.label :number_of_tickets %>
+        <%= f.number_field :quantity, min: 1, class: "form-control"%>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

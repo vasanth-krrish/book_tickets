@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-header text-center">
+    <%= image_tag movie_image(@movie), class: "mb-3" %><br>
+    <h5><strong><%= @movie.name %></strong></h5>
+  </div>
+  <div class="card-body">
+    <div class="card-columns">
+      <% @movie.movie_timings.each do |movie_timing| %>
+        <% if movie_timing.screening_till >= Date.today %>
+          <% timing = Timing.find(movie_timing.timing_id) %>
+          <div class="card text-center">
+            <div class="card-body">
+              <%= image_tag theatre_image(timing.screen.theatre), class: "rounded-circle mb-1" %><br>
+              <strong><%= timing.screen.theatre.name %><br>
+                      <%= timing.screen.name %></strong><br>
+              <small><%= get_screen_time(timing.timing) %><br>
+              Till <%= movie_timing.screening_till %><br>
+              <i class="fa fa-inr" aria-hidden="true"></i> <%= movie_timing.price_cents %></small><br>
+              <%= link_to "Buy", new_ticket_path(movie_timing_id: movie_timing.id), class: "btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

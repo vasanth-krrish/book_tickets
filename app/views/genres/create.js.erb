@@ -1,0 +1,5 @@
+$("#errors").append("<%= j render 'layouts/messages', alert: @error %>")
+<% unless @error %>
+  $("#genres-container").append("<%= j render @genre %>")
+<% end %>
+$("#genre_genre").val("");

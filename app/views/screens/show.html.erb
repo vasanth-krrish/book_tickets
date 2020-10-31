@@ -1,0 +1,47 @@
+<div id="errors"></div>
+<div class="card">
+  <div class="card-body">
+    <p class="text-center">
+      <strong class="mb-2"><%= @theatre.name %></strong><br>
+      <%= @screen.name %><br>
+      <%= @screen.seats %> seats
+    </p>
+    <div id="screen-timings" class="card-columns text-center">
+      <%= render @screen.screen_timings.order("timing") %>
+    </div>
+    <div id="timing-form"></div>
+    <% if user_signed_in? %>
+      <hr>
+      <%= link_to new_screen_timing_path(screen_id: @screen.id), remote: true, class: "btn btn-outline-link" do %>
+        <i class="fa fa-plus" aria-hidden="true"> &nbsp; Add Timings</i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<style media="screen">
+  @media (min-width: 576px) {
+      .card-columns {
+          column-count: 2;
+      }
+  }
+
+  @media (min-width: 768px) {
+      .card-columns {
+          column-count: 3;
+      }
+  }
+
+  @media (min-width: 992px) {
+      .card-columns {
+          column-count: 4;
+      }
+  }
+
+  @media (min-width: 1200px) {
+      .card-columns {
+          column-count: 5;
+      }
+  }
+
+</style>

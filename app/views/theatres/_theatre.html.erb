@@ -1,0 +1,17 @@
+<a href="<%= theatre_path(theatre) %>">
+  <div class="card" style="color:black;">
+    <div class="card-body text-center">
+      <%= image_tag theatre_image(theatre), class: "rounded-circle mb-2" %><br>
+      <strong><%= theatre.name %></strong><br>
+      <small>
+        <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;
+        <%= theatre.address %>, <%= theatre.city %>, <%= theatre.state %> -<%= theatre.pincode %>
+      </small><br>
+      <% if theatre.screens.count > 0 %>
+        <small>
+          <%= theatre.screens.count %> screens
+        </small>
+      <% end %>
+    </div>
+  </div>
+</a>

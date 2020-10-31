@@ -1,0 +1,23 @@
+<div id="movie-timing-<%= movie_timing.id %>">
+  <% timing = Timing.find(movie_timing.timing_id) %>
+  <div class="card text-center">
+    <div class="card-header">
+      <%= image_tag theatre_image(timing.screen.theatre), class: "rounded-circle mb-1" %><br>
+      <strong><%= timing.screen.theatre.name %><br>
+              <%= timing.screen.name %></strong><br>
+      <small><%= get_screen_time(timing.timing) %><br>
+      Till <%= movie_timing.screening_till %><br>
+      <i class="fa fa-inr" aria-hidden="true"></i> <%= movie_timing.price_cents %></small>
+    </div>
+    <div class="card-body">
+      <%= link_to edit_movie_timing_path(movie_id: @movie.id, id: movie_timing.id), remote: true,
+          class: "btn btn-outline-link" do %>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to movie_timing_path(movie_id: @movie.id, id: movie_timing.id), method: :delete, remote: true,
+          data: {confirm: "Are you sure you want to delete?"}, class: "btn btn-outline-link" do %>
+            <i class="fa fa-trash" aria-hidden="true" style="color:red"></i>
+      <% end %>
+    </div>
+  </div>
+</div>

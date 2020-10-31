@@ -1,0 +1,5 @@
+$("#errors").append("<%= j render 'layouts/messages', alert: @error %>")
+<% unless @error %>
+  $("#person-<%= @person.id %>").fadeOut();
+  $("#persons-form").html("<%= j render 'form', person: Person.new %>");
+<% end %>
