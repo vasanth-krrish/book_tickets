@@ -17,7 +17,7 @@ Step 4 : Create user with your email as devise sends confirmation token to your 
 
 Step 5 : Add a movie with plus icon present on navbar.
 
-Step 6 : Add Screen to the theatres from Movie show page.
+Step 6 : Add theatre screen to the theatres from Movie show page.
 
 Step 7 : Now You can buy ticket from Movie Show page. You can buy tickets only after assigning a screen to the movie.
 
